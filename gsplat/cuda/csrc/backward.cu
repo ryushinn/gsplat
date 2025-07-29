@@ -109,7 +109,7 @@ __global__ void nd_rasterize_backward_kernel(
         const float v_sigma = -opac * vis * v_alpha;
 
         atomicAdd(&(v_conic[g].x), 0.5f * v_sigma * delta.x * delta.x);
-        atomicAdd(&(v_conic[g].y), 0.5f * v_sigma * delta.x * delta.y);
+        atomicAdd(&(v_conic[g].y), v_sigma * delta.x * delta.y);
         atomicAdd(&(v_conic[g].z), 0.5f * v_sigma * delta.y * delta.y);
         atomicAdd(
             &(v_xy[g].x), v_sigma * (conic.x * delta.x + conic.y * delta.y)
@@ -966,7 +966,7 @@ __global__ void nd_rasterize_backward_sum_kernel(
         const float v_sigma = -opac * vis * v_alpha;
 
         atomicAdd(&(v_conic[g].x), 0.5f * v_sigma * delta.x * delta.x);
-        atomicAdd(&(v_conic[g].y), 0.5f * v_sigma * delta.x * delta.y);
+        atomicAdd(&(v_conic[g].y), v_sigma * delta.x * delta.y);
         atomicAdd(&(v_conic[g].z), 0.5f * v_sigma * delta.y * delta.y);
         atomicAdd(
             &(v_xy[g].x), v_sigma * (conic.x * delta.x + conic.y * delta.y)
