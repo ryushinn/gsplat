@@ -5,6 +5,8 @@ PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {
     // auto diff functions
     m.def("nd_rasterize_forward", &nd_rasterize_forward_tensor);
     m.def("nd_rasterize_backward", &nd_rasterize_backward_tensor);
+    m.def("nd_rasterize_sum_forward", &nd_rasterize_forward_sum_tensor);
+    m.def("nd_rasterize_sum_backward", &nd_rasterize_backward_sum_tensor);
     m.def("rasterize_forward", &rasterize_forward_tensor);
     m.def("rasterize_backward", &rasterize_backward_tensor);
     m.def("rasterize_sum_forward", &rasterize_forward_sum_tensor);
